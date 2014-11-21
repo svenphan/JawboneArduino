@@ -1,6 +1,6 @@
 
 App = {
-	init: function() {
+	init: function refreshData() {
 		var endpoint = 'http://localhost:3000/jawbone';
 		$.ajax({
 			url: endpoint,
@@ -12,12 +12,18 @@ App = {
 			success: function(data) {
 				var steps = data.data.items[0].title;
 				$('.steps').html(steps);
+				console.log("Hi you have new");	
+
 			},
 			error: function(response) {
 				console.log('data error', response);
 			}
 		});
 
+	setInterval(refreshData, 50000);
 	}
 }
 App.init();
+
+
+
